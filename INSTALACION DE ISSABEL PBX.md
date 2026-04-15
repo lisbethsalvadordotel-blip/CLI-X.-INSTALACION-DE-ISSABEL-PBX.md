@@ -4,11 +4,10 @@
 1) CREAR LA MÁQUINA EN DIGITAL OCEAN
 ============================================
 
-# Sistema operativo:
+Sistema operativo:
 Rocky Linux 8
 
-# Conectarse por SSH:
-
+Conectarse por SSH:
 ssh root@IP_DE_LA_VM
 
 ------------------------------------------------------------
@@ -17,66 +16,56 @@ ssh root@IP_DE_LA_VM
 2) INSTALAR ISSABEL
 ============================================
 
-# Actualizar sistema
-
+Actualizar sistema:
 yum update -y
 
-# Instalar wget
-
+Instalar wget:
 yum install wget -y
 
-# Descargar instalador
-
+Descargar instalador:
 wget http://repo.issabel.org/issabel5-netinstall.sh
 
-# Dar permisos
-
+Dar permisos:
 chmod 700 issabel5-netinstall.sh
 
-# Ejecutar instalación
-
+Ejecutar instalación:
 ./issabel5-netinstall.sh
 
 ------------------------------------------------------------
 
-# CONFIGURACIÓN DURANTE INSTALACIÓN
+CONFIGURACIÓN DURANTE INSTALACIÓN
 
-# Idioma:
+Idioma:
 English
 
-# Seleccionar:
+Seleccionar:
 16
 
-# En "Choose additional packages":
-
+En "Choose additional packages":
 [*] Issabel Network Licensed modules
-
-# (Quitar las demás opciones)
+(Quitar las demás opciones)
 
 ------------------------------------------------------------
 
-# Contraseña solicitada:
-
+Contraseña solicitada:
 XXXXXX
 
 ------------------------------------------------------------
 
-# Seleccionar driver SIP:
-
-(*) chan_pjsip   ✔ (IMPORTANTE)
+Seleccionar driver SIP:
+(*) chan_pjsip   (IMPORTANTE)
 
 ------------------------------------------------------------
 
-# Luego seleccionar:
-
+Luego seleccionar:
 Naaah, get a real job
 
 ------------------------------------------------------------
 
-# NOTA IMPORTANTE
+NOTA IMPORTANTE
 
-# Si se queda en "Rebooting Server":
-# Ir al navegador y probar la IP directamente
+Si se queda en "Rebooting Server":
+Ir al navegador y probar la IP directamente
 
 ------------------------------------------------------------
 
@@ -84,19 +73,15 @@ Naaah, get a real job
 3) ACCESO WEB
 ============================================
 
-# En navegador:
-
+En navegador:
 https://IP_DE_LA_VM
 
-# Credenciales:
+Credenciales:
+Usuario: admin
+Contraseña: XXXXX
 
-Usuario: admin  
-Contraseña: XXXXX 
-
-------------------------------------------------------------
-
-# Si pide registro:
-# Cerrar con la X
+Si pide registro:
+Cerrar con la X
 
 ------------------------------------------------------------
 
@@ -104,30 +89,22 @@ Contraseña: XXXXX
 4) CREAR EXTENSIONES
 ============================================
 
-# Ruta:
-
+Ruta:
 PBX → Applications → Extensions
 
-------------------------------------------------------------
+EXTENSIÓN PROFESOR
 
-# EXTENSIÓN PROFESOR
+User Extension: 2220
+Display Name: Profesor Adrian
+Secret: Teletubies123$
 
-User Extension: 2220  
-Display Name: Profesor Adrian  
-Secret: Teletubies123$  
-
-# Click:
+Click:
 Submit
 
-------------------------------------------------------------
-
-# IMPORTANTE 
-
-# SIEMPRE hacer esto:
-
+IMPORTANTE:
+SIEMPRE hacer:
 Apply Configuration
-
-# (Si no haces esto → NO FUNCIONA)
+(Si no haces esto → NO FUNCIONA)
 
 ------------------------------------------------------------
 
@@ -144,18 +121,14 @@ systemctl disable fail2ban
 6) CONFIGURAR SOFTPHONE (ZOIPER / MICROSIP)
 ============================================
 
-# (MicroSIP ya instalado según el profe)
+MicroSIP (PC) o Zoiper (celular)
 
-# O usar Zoiper en el celular
+CONFIGURACIÓN SIP
 
-------------------------------------------------------------
-
-# CONFIGURACIÓN SIP
-
-Account name: cualquiera  
-Domain: IP_DE_LA_VM:5060 o 5066  
-Username: 2220  
-Password: Teletubies123$  
+Account name: cualquiera
+Domain: IP_DE_LA_VM:5060 o 5066
+Username: 2220
+Password: Teletubies123$
 
 ------------------------------------------------------------
 
@@ -163,13 +136,12 @@ Password: Teletubies123$
 7) PRUEBA
 ============================================
 
-# Realizar llamada entre extensiones
+Realizar llamada entre extensiones
 
-# RESULTADO ESPERADO:
-
-# - Registro correcto en softphone
-# - Se pueden hacer llamadas
-# - Audio funcional
+RESULTADO ESPERADO:
+- Registro correcto en softphone
+- Se pueden hacer llamadas
+- Audio funcional
 
 ------------------------------------------------------------
 
@@ -179,8 +151,8 @@ COMANDOS CLAVE
 
 ssh root@IP
 yum update -y
-wget issabel
-chmod +x
+wget issabel5-netinstall.sh
+chmod +x issabel5-netinstall.sh
 ./issabel5-netinstall.sh
 systemctl stop fail2ban
 
@@ -190,20 +162,20 @@ systemctl stop fail2ban
 ERRORES COMUNES
 ============================================
 
-# No abre la web:
-usar http o https
-verificar IP
+No abre la web:
+- usar http o https
+- verificar IP
 
-# No funcionan llamadas:
-NO diste Apply Configuration 
+No funcionan llamadas:
+- NO diste Apply Configuration
 
-# Softphone no conecta:
-verificar puerto (5060 o 5066)
+Softphone no conecta:
+- verificar puerto (5060 o 5066)
 
-# Bloqueos:
-fail2ban activo 
+Bloqueos:
+- fail2ban activo
 
-# Ver puertos:
+Ver puertos:
 ss -tuln | grep 506
 
 ------------------------------------------------------------
@@ -212,8 +184,10 @@ ss -tuln | grep 506
 RESULTADO FINAL
 ============================================
 
-# - Issabel instalado
-# - Acceso web funcional
-# - Extensión creada
-# - Softphone conectado
-# - Llamadas funcionando
+- Issabel instalado
+- Acceso web funcional
+- Extensión creada
+- Softphone conectado
+- Llamadas funcionando
+
+------------------------------------------------------------
